@@ -4,30 +4,30 @@ bool hasChanged = true;
 
 struct menuItem {
   String description;
-  void (*functionPtr)(void* funParams);
+  void (*functionPtr)();
 };
 
-const menuItem menuItems[] = {
-  {"Super Runner", reinterpret_cast<void (*)(void*)>(SuperRunner::Run)},
+menuItem menuItems[] = {
+  {"Super Runner", SuperRunner::Run},
+  {"Super Runner 2", SuperRunner::Run},
+  {"Super Runner 3", SuperRunner::Run},
 };
 
 int Menu::index = 0;
 
 // Function to move to the next menu item
 void Menu::nextMenuItem() {
-    int& index = Menu::index;
-    index++;
-    if (index >= sizeof(menuItems) / sizeof(menuItems[0])) {
-        index = 0; // Wrap around to the beginning if we reach the end
+    Menu::index++;
+    if (Menu::index >= sizeof(menuItems) / sizeof(menuItems[0])) {
+        Menu::index = sizeof(menuItems) / sizeof(menuItems[0]) - 1; // Wrap around to the beginning if we reach the end
     }
 }
 
 // Function to move to the previous menu item
 void Menu::prevMenuItem() {
-    int& index = Menu::index;
-    index--;
-    if (index < 0) {
-        index = sizeof(menuItems) / sizeof(menuItems[0]) - 1; // Wrap around to the end if we reach the beginning
+    Menu::index--;
+    if (Menu::index < 0) {
+        Menu::index = 0; // Wrap around to the end if we reach the beginning
     }
 }
 
@@ -35,36 +35,27 @@ void Menu::prevMenuItem() {
 void Menu::handleKeypadInput() {
     char key = HardwareManager::keypad.getKey(); // Get the key pressed
 
-    if (key == 'A') {
+    if (key == 'C') {
         prevMenuItem(); // Move to the previous menu item
         hasChanged= true;
     } else if (key == 'D') {
         nextMenuItem(); // Move to the next menu item
         hasChanged= true;
     } else if (key == '*'){
-        menuItems[index].functionPtr(reinterpret_cast<void*>(&LCDManager::lcd));
+        menuItems[index].functionPtr();
+        LCDManager::mustReturn = true;
+        hasChanged=true;
     }
 }
 
 void Menu::Run(void *pvParameters) {
-    LCDManager::lcd.clear();
-    LCDManager::lcd.setCursor(0, 0);
-    LCDManager::lcd.print("PRO runner");
-    LCDManager::lcd.setCursor(13, 0);
-    LCDManager::lcd.write(byte(1));
-    LCDManager::lcd.write(byte(1));
-    LCDManager::lcd.write(byte(1));
-    LCDManager::lcd.setCursor(0, 1);
-    LCDManager::lcd.print("OOOOOOOOOOOOOOOO");
-
-    delay(200);
     for (size_t i = 0; i < 16; i++)
     {
         LCDManager::lcd.setCursor(i, 1);
         LCDManager::lcd.write(">");
         LCDManager::lcd.setCursor(i-1, 1);
         LCDManager::lcd.write("=");
-        delay(150);
+        delay(50);
     }
     
 

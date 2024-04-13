@@ -1,10 +1,12 @@
 #include "SupperRunner.h"
 
-void SuperRunner::Run(LiquidCrystal& lcd){
-    bool isRunning = true;
-    lcd.clear();
-    while (isRunning){
-        
+bool SuperRunner::isRunning;
+
+void SuperRunner::Run(){
+    LCDManager::lcd.clear();
+
+    while (SuperRunner::isRunning){
+        SuperRunner::isRunning = false;
     }
-    delete(&isRunning);
+    delay(1000);
 }

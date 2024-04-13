@@ -2,8 +2,8 @@
 #define MENU_H
 
 #include <Arduino.h>
-#include <LiquidCrystal.h>
 
+#include "LCD.h"
 #include "programs/SupperRunner/SupperRunner.h"
 #include "hardware/HardwareManager.h"
 

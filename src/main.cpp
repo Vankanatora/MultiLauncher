@@ -7,7 +7,7 @@
 #include "programs/Menu.h"
 
 void setup() {
-  Serial.begin(9800);
+  Serial.begin(9600);
   HardwareManager::Setup();
   LCDManager::Setup();
 

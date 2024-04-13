@@ -5,12 +5,9 @@
 
 class LCDManager {
 public:
-    static bool GraphicsData[80][16];
-    static char StandartData[16][2];
-
-    static bool GraphicsMode;
-
     static LiquidCrystal lcd;
+
+    static bool mustReturn;
 
     static void Setup();
     static void Run(void *pvParameters);
