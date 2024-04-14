@@ -43,7 +43,7 @@ void Menu::handleKeypadInput() {
         hasChanged= true;
     } else if (key == '*'){
         menuItems[index].functionPtr();
-        LCDManager::mustReturn = true;
+        IconManager::setupIcons(LCDManager::lcd);
         hasChanged=true;
     }
 }

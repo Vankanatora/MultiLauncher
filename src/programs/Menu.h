@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <Arduino.h>
+#include <hardware/display/standart/Icons/IconManager.h>
 
 #include "LCD.h"
 #include "programs/SupperRunner/SupperRunner.h"
