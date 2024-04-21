@@ -1,4 +1,5 @@
 #include "SpaceInvaders.h"
+#include "memory/MemoryManager.h"
 
 bool SpaceInvaders::isRunning = false;
 
@@ -349,16 +350,35 @@ void initLevel(byte l)
   LCDManager::lcd.clear();
 }
 
+int highScore() {
+  size_t address = 10000;
+
+  int retrievedScore = FlashStorage::readFromFlash<int>(address);
+  if (retrievedScore != -1 && retrievedScore < score){
+    FlashStorage::writeToFlash(score, address);
+    retrievedScore = score;
+  }
+  else {
+    if (retrievedScore == -1) {
+      retrievedScore = score;
+    }
+  }
+
+  return retrievedScore;
+}
+
 /*Displaying the final score*/
 void gameOver()
 {
   LCDManager::lcd.clear();
 
   LCDManager::lcd.setCursor(0,0);
-  LCDManager::lcd.print("GAME OVER");
+  LCDManager::lcd.print("Highest: "); 
+  LCDManager::lcd.setCursor(9,0);
+  LCDManager::lcd.print(highScore());
   LCDManager::lcd.setCursor(0,1);
-  LCDManager::lcd.print("Score:  ");
-  LCDManager::lcd.setCursor(8,1);
+  LCDManager::lcd.print("Score: ");
+  LCDManager::lcd.setCursor(7,1);
   LCDManager::lcd.print(score);
   delay(2000);
   SpaceInvaders::isRunning = false;

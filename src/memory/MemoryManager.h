@@ -1,3 +1,6 @@
+#ifndef MemoryManager_H
+#define MemoryManager_H
+
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 
@@ -16,3 +19,4 @@ public:
     }
 };
 
+#endif //MemoryManager_H
