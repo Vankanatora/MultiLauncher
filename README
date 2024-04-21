@@ -1,3 +1,5 @@
 # MultiLauncher
 
-This is a project focused on achiving running multiple programs on a single arduino using multitasking at it's core
+This is a project focused on achieving running multiple programs on a single Arduino using multitasking at its core
+
+Documentation can be found in .sw folder and when project is opened on the swimm platform.
