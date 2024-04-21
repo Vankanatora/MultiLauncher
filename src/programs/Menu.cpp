@@ -8,9 +8,7 @@ struct menuItem {
 };
 
 menuItem menuItems[] = {
-  {"Super Runner", SuperRunner::Run},
-  {"Super Runner 2", SuperRunner::Run},
-  {"Super Runner 3", SuperRunner::Run},
+  {"Space Invaders", SpaceInvaders::Run},
 };
 
 int Menu::index = 0;

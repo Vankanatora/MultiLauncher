@@ -5,7 +5,7 @@
 #include <hardware/display/standart/Icons/IconManager.h>
 
 #include "LCD.h"
-#include "programs/SupperRunner/SupperRunner.h"
+#include "programs/SpaceInvaders/SpaceInvaders.h"
 #include "hardware/HardwareManager.h"
 
 class Menu

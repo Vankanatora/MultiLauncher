@@ -1,6 +1,6 @@
-#include "SupperRunner.h"
+#include "SpaceInvaders.h"
 
-bool SuperRunner::isRunning = false;
+bool SpaceInvaders::isRunning = false;
 
 auto key = HardwareManager::keypad.getKey();
 
@@ -355,21 +355,21 @@ void gameOver()
   LCDManager::lcd.clear();
 
   LCDManager::lcd.setCursor(0,0);
-  LCDManager::lcd.print("GAME OVER|Exit #");
+  LCDManager::lcd.print("GAME OVER");
   LCDManager::lcd.setCursor(0,1);
   LCDManager::lcd.print("Score:  ");
   LCDManager::lcd.setCursor(8,1);
   LCDManager::lcd.print(score);
   delay(2000);
-  SuperRunner::isRunning = false;
+  SpaceInvaders::isRunning = false;
 }
 
 /*Init: starting LCD and creating custom characters*/
-void SuperRunner::Run()
+void SpaceInvaders::Run()
 {
  isRunning = true;
  LCDManager::lcd.clear();
- LCDManager::lcd.print(" Spade Invaders");
+ LCDManager::lcd.print(" Space Invaders"); // SpaceInvaders
  LCDManager::lcd.setCursor(6,1);
  LCDManager::lcd.print("Game");
  delay(2000);
@@ -385,7 +385,7 @@ void SuperRunner::Run()
  randomSeed(analogRead(1));
  initLevel (1);
 
-  while (SuperRunner::isRunning){
+  while (SpaceInvaders::isRunning){
     //Processing the buttons
   key = HardwareManager::keypad.getKey();
   switch(key){

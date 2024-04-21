@@ -1,13 +1,13 @@
-#ifndef SuperRunner_H
-#define SuperRunner_H
+#ifndef SpaceInvaders_H
+#define SpaceInvaders_H
 
 #include <LiquidCrystal.h>
 #include "../Menu.h"
 
-class SuperRunner {
+class SpaceInvaders {
     public:
     static void Run();
     static bool isRunning;
 };
 
-#endif // SuperRunner_H
+#endif // SpaceInvaders_H
